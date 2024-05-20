@@ -1,0 +1,73 @@
+@Metadata.layer: #CORE
+@UI.headerInfo: {
+    typeName: 'IdLibro',
+    typeNamePlural: 'IdLibros',
+    typeImageUrl: '',
+    imageUrl: '',
+    title: {
+        type: #STANDARD,
+        label: '',
+        iconUrl: '',
+        criticality: '',
+        criticalityRepresentation: #WITHOUT_ICON,
+        value: 'Editorial',
+        valueQualifier: '',
+        targetElement: '',
+        url: ''
+    },
+    description: {
+        type: #STANDARD,
+        label: '',
+        iconUrl: '',
+        criticality: '',
+        criticalityRepresentation: #WITHOUT_ICON,
+        value: 'Titulo',
+        valueQualifier: '',
+        targetElement: '',
+        url: ''
+    }
+}
+@Search.searchable: true
+
+annotate entity zb_libros_ss with
+{
+
+  @UI.facet: [{ id:'DetLibro', label: 'Det Libro', type: #COLLECTION, position: 10 },
+               { id:'IdLibro', parentId: 'DetLibro', label: 'Detalles', type: #FIELDGROUP_REFERENCE,
+               targetQualifier: 'DetLibro', position: 10 },
+               { id:'Cliente', label: 'Clientes', type: #LINEITEM_REFERENCE, targetElement: '_Clientes', position: 20 }
+              ]
+
+
+  @UI.fieldGroup: [{ qualifier: 'DetLibro', position: 10 }]
+  @UI: { lineItem: [{ position: 10, importance:#HIGH }],
+      selectionField: [{ position: 10 }] }
+  Titulo;
+  @UI.lineItem: [{ position: 20, importance:#HIGH }]
+  Autor;
+  @UI.lineItem: [{ position: 30, importance:#HIGH }]
+  @Search: {
+    defaultSearchElement: true,
+    ranking: #MEDIUM,
+    fuzzinessThreshold: 0.8 }
+  Editorial;
+  @UI.fieldGroup: [{ qualifier: 'DetLibro', position: 40 }]
+  @Consumption.valueHelpDefinition: [{ entity : { name : 'zb_catego_ss', element: 'bi_categ' } }]
+  Categoria;
+  @UI.lineItem: [{ position: 40, importance:#HIGH }]
+  ventas;
+  @UI.lineItem: [{ position: 50, importance:#HIGH, label: 'status', criticality: 'ventas' }]
+  status;
+  @UI.lineItem: [{ position: 60, importance:#MEDIUM }]
+  Paginas;
+  @UI.lineItem: [{ position: 70, importance:#MEDIUM }]
+  Formato;
+  @UI.fieldGroup: [{ qualifier: 'DetLibro', position: 20 }]
+  Precio;
+  @UI.fieldGroup: [{ qualifier: 'DetLibro', position: 30 }]
+  Moneda;
+  @UI.fieldGroup: [{ qualifier: 'DetLibro', position: 40 }]
+  Url;
+  /* Associations */
+
+}

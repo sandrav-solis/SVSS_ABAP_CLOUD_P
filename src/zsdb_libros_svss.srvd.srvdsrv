@@ -1,0 +1,5 @@
+@EndUserText.label: 'Libros'
+define service ZSDB_LIBROS_SVSS {
+  expose zb_libros_ss as Libros;
+  expose ZB_CLNTS_SS  as Clientes;
+}

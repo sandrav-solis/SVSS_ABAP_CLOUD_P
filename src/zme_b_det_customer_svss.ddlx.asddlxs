@@ -1,0 +1,13 @@
+@Metadata.layer: #CORE
+annotate entity Z_B_DET_CUSTOMER_SVSS with
+{
+  @UI.lineItem: [{ position: 10, importance:#HIGH }]
+  Nombre;
+  @UI.lineItem: [{ position: 20, importance:#HIGH }]
+  Apellidos;
+  @UI.lineItem: [{ position: 30, importance:#HIGH, label: 'Email' }]
+  Correo;
+  @UI.lineItem: [{ position: 40, importance:#HIGH, label: 'T.Contrato' }]
+  TipoContrato;
+
+}
