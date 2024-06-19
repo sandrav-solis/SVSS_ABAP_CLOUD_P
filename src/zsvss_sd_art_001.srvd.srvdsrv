@@ -1,0 +1,4 @@
+@EndUserText.label: 'Artículos Arte'
+define service ZSVSS_SD_ART_001 {
+  expose ZSVSS_B_ART_001 as Articulos;
+}

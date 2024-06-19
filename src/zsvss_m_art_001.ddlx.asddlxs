@@ -1,0 +1,58 @@
+@Metadata.layer: #CORE
+@UI.headerInfo: {
+    typeName: 'Artículo Arte',
+    typeNamePlural: 'Artíuclos Arte',
+    typeImageUrl: '',
+    imageUrl: 'URL',
+    title: {
+        type: #STANDARD,
+        label: '',
+        iconUrl: '',
+        criticality: '',
+        criticalityRepresentation: #WITHOUT_ICON,
+        value: '',
+        valueQualifier: '',
+        targetElement: '',
+        url: ''
+    },
+    description: {
+        type: #STANDARD,
+        label: '',
+        iconUrl: '',
+        criticality: '',
+        criticalityRepresentation: #WITHOUT_ICON,
+        value: '',
+        valueQualifier: '',
+        targetElement: '',
+        url: ''
+    }
+}
+
+annotate entity ZSVSS_B_ART_001 with
+{
+
+  @UI.facet: [{ id:'DetArt', label: 'Det Artículo', type: #COLLECTION, position: 10 },
+               { id:'Art', parentId: 'DetArt', label: 'Detalles', type: #FIELDGROUP_REFERENCE,
+               targetQualifier: 'DetArt', position: 10 }
+              ]
+
+  @UI.hidden: true
+  mandt;
+
+  @UI.lineItem: [{ position: 10, importance:#HIGH }]
+  Id;
+  @UI.lineItem: [{ position: 20, importance:#HIGH }]
+  Descr;
+  @UI.lineItem: [{ position: 30, importance:#HIGH }]
+  Stock;
+  @UI.lineItem: [{ position: 40, importance:#HIGH, criticality: 'status' }]
+  status;
+
+  @UI.fieldGroup: [{ qualifier: 'DetArt', position: 10 }]
+  Descr2;
+  @UI.fieldGroup: [{ qualifier: 'DetArt', position: 20 }]
+  Color;
+  @UI.fieldGroup: [{ qualifier: 'DetArt', position: 30 }]
+  Piezas;
+
+}
